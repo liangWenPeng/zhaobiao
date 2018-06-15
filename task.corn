@@ -1,0 +1,8 @@
+1 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=a56products
+2 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=a95306
+#3 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=chinabiddingcn
+4 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=chinabiddingcom
+5 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=zycg
+
+#test
+#15 17 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=zycg
