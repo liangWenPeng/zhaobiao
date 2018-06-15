@@ -10,7 +10,7 @@ USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, li
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
-DOWNLOAD_DELAY = 5
+DOWNLOAD_DELAY = 30
 # The download delay setting will honor only one of:
 CONCURRENT_REQUESTS_PER_DOMAIN = 4
 CONCURRENT_REQUESTS_PER_IP = 4

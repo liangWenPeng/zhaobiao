@@ -57,8 +57,8 @@ def extract_phone(html, loose=True):
     phone_re = r'1[3,4,5,7,8]\d{9}'
     pres = '联系电话|联系方式|联系人电话|联络人电话|联系人及联系方式|电话|手机'.split('|')
     pres = [r'\s*'.join(p) for p in pres]
-    pres = [r'{}.*?'.format(p) for p in pres]
     mids = ['：', ':', ]
+    mids = [r'{}\s*[\u4e00-\u9fa5]*?'.format(m) for m in mids]
     targets = '{}|{}'.format(phone_re, tel_re).split('|')
     tel = re_search(pres, mids, targets, html, join_s=False)
     if not tel and loose:
@@ -66,13 +66,16 @@ def extract_phone(html, loose=True):
         pres = [r'\s*'.join(p) for p in pres]
         pres = [r'{}.*?'.format(p) for p in pres]
         mids = ['：*', ':*', ' ', ]
+        mids = [r'{}\s*[\u4e00-\u9fa5]*?'.format(m) for m in mids]
         tel = re_search(pres, mids, targets, html, join_s=False)
     return tel
 
 
 def extract_name(html, loose=True):
-    pres = '联系人|联系人及联系方式|联络人员|招标人员|负责人|采购人|联系方式|发布人|经办人|招标人|业务咨询|商务合作|技术'.split('|')
+    pres = '联系人|联系人及联系方式|联系人及电话|联系方式|联系电话|联络人员|招标人员|负责人|采购人|联系方式|发布人|经办人|招标人|技术咨询人|' \
+           '业务咨询|商务合作|技术'.split('|')
     mids = ['：', ':']
+    mids = [r'{}\s*[0-9\-]*'.format(m) for m in mids]
     targets = ['[\u4e00-\u9fa5]{2,4}']
     name = re_search(pres, mids, targets, html)
     if loose and not name:
@@ -96,6 +99,10 @@ def login(url, data):
 
 
 if __name__ == '__main__':
-    url = 'http://www.chinabidding.com/bidDetail/231399213.html'
-    html = clean_html(requests.get(url).text)
-    print(extract_addr(html), extract_name(html), extract_phone(html))
+    data = {
+        'account': 'hzforklift',
+        'pwd': 'sesame'
+    }
+    url = 'http://www.56products.com/login/index.html'
+    ck = login(url,data)
+    print(ck)

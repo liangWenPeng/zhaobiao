@@ -45,6 +45,7 @@ class A95306Spider(Spider):
         item = response.meta['item']
         item['source'] = response.url
         addr = response.css('div.noticeBox > div.topTlt > p.subhead > span:nth-child(6)::text').extract_first().strip()
+        html = clean_html(response.text)
         item['addr'] = extract_addr(html, loose=False) or addr
         # tbody = response.css('body > table.detail_gg > tbody').extract_first()
         # print(tbody)

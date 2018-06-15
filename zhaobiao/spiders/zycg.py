@@ -39,6 +39,7 @@ class ZycgSpider(Spider):
         # tbody = response.css('body > table.detail_gg > tbody').extract_first()
         # print(tbody)
         div_center = clean_html(response.text)
+        item['addr'] = extract_addr(div_center)
         tel = extract_phone(div_center)
         if tel:
             item['tel'] = tel
