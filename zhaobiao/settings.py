@@ -13,6 +13,12 @@ CONCURRENT_REQUESTS_PER_IP = 4
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
 
+EXTENSIONS = {
+    'scrapy.contrib.closespider.CloseSpider': 300,
+}
+
+CLOSESPIDER_TIMEOUT = 60 * 60 * 5
+
 # Override the default request headers:
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
 DEFAULT_REQUEST_HEADERS = {
