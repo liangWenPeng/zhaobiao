@@ -5,18 +5,18 @@ from urllib import parse
 
 from scrapy.spiders import Spider
 from scrapy import Request
+
+from zhaobiao.spiders.base import ZbBaseSpider
 from zhaobiao.utils import *
 from zhaobiao.items import ZhaobiaoItem
 
 
-class A95306Spider(Spider):
+class A95306Spider(ZbBaseSpider):
     name = 'a95306'
-    keywords = get_keywords()
-    start_urls = ['http://wzcgzs.95306.cn/notice/indexlist.do?dealGroup=10&notTitle={}'.format(k) for k in keywords]
+    search_url = 'http://wzcgzs.95306.cn/notice/indexlist.do?dealGroup=10&notTitle={keyword}'
 
     def parse(self, response):
-        keyword = re.search(r'notTitle=(.*)', response.url).group(1)
-        keyword = parse.unquote(keyword)
+        keyword = response.meta['keyword']
 
         trs = response.css('tr')
         for tr in trs[1:]:
@@ -31,7 +31,7 @@ class A95306Spider(Spider):
             item['keyword'] = keyword
             yield Request(response.urljoin(href), callback=self.parse_article, meta={'item': item}, priority=2)
 
-        if 'extend' not in response.url:
+        if response.meta.get('is_start', False):
             b = response.css('div.LsitInfoFrameBtmBg > b:nth-child(7)::text').extract_first()
             # print(b)
             page_num = int(re.search('共(\d+)页', b).group(1))
@@ -39,7 +39,7 @@ class A95306Spider(Spider):
                 for p in range(2, page_num + 1):
                     url = 'http://wzcgzs.95306.cn/notice/indexlist.do?dealGroup=10&unitType=&noticeType=&dealType=&materialType=&' \
                           'extend=1&curPage={}&notTitle={}&inforCode=&time0=&time1='.format(p, keyword)
-                    yield Request(url=url, callback=self.parse)
+                    yield Request(url=url, callback=self.parse, dont_filter=True)
 
     def parse_article(self, response):
         item = response.meta['item']

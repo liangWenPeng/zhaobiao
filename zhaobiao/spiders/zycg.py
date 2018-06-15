@@ -11,13 +11,13 @@ from zhaobiao.items import ZhaobiaoItem
 
 class ZycgSpider(Spider):
     name = 'zycg'
-    keywords = get_keywords()
-    start_urls = ['http://www.zycg.gov.cn/article/article_search?keyword={}&catalog='.format(k) for k in keywords]
+
+    search_url = 'http://www.zycg.gov.cn/article/article_search?keyword={keyword}&catalog='
 
     def parse(self, response):
         lis = response.css('ul.lby-list > li')
-        keyword = re.search(r'keyword=(.*?)&', response.url).group(1)
-        keyword = parse.unquote(keyword)
+        keyword = response.meta['keyword']
+
         for li in lis[:-1]:
             item = ZhaobiaoItem()
             date_str = li.css('span::text').extract_first().strip()[1:-1]
@@ -31,7 +31,7 @@ class ZycgSpider(Spider):
 
         next_page = response.css('a.next_page::attr(href)').extract_first()
         if next_page:
-            yield Request(response.urljoin(next_page), callback=self.parse)
+            yield Request(response.urljoin(next_page), callback=self.parse, dont_filter=True)
 
     def parse_article(self, response):
         item = response.meta['item']

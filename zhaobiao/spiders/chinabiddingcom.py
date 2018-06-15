@@ -14,14 +14,14 @@ class ChinabiddingcomSpider(Spider):
     name = 'chinabiddingcom'
     keywords = get_keywords()
     search_url = 'http://www.chinabidding.com/search/proj.htm'
-    def start_requests(self):
 
+    def start_requests(self):
         for k in self.keywords:
             data = {
                 'fullText': k,
                 'poClass': 'BidNotice',
             }
-            yield FormRequest(url=self.search_url, formdata=data, meta={'keyword': k, 'is_start': True})
+            yield FormRequest(url=self.search_url, formdata=data, meta={'keyword': k, 'is_start': True},dont_filter=True)
 
     def parse(self, response):
         lis = response.css('ul.as-pager-body > li')
@@ -37,7 +37,7 @@ class ChinabiddingcomSpider(Spider):
             item['addr'] = area
             item['keyword'] = keyword
             yield Request(response.urljoin(href), callback=self.parse_article, meta={'item': item})
-        if response.meta.get('is_start',False):
+        if response.meta.get('is_start', False):
             item_num = response.css(
                 '#lab-show > div.as-floor-normal > div.as-md > h3 > div > ul > li > span::text').extract_first()
             item_num = int(item_num)
@@ -48,7 +48,7 @@ class ChinabiddingcomSpider(Spider):
                     'currentPage': str(page),
                     'infoClassCodes': '0105'
                 }
-                yield FormRequest(url=self.search_url, formdata=data, meta={'keyword': keyword})
+                yield FormRequest(url=self.search_url, formdata=data, meta={'keyword': keyword},dont_filter=True)
 
     def parse_article(self, response):
         item = response.meta['item']

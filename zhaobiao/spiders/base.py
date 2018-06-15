@@ -10,4 +10,4 @@ class ZbBaseSpider(Spider):
     def start_requests(self):
         for k in self.keywords:
             url = self.search_url.format(keyword=k)
-            yield Request(url=url, meta={'keyword': k, 'is_start': True})
+            yield Request(url=url, meta={'keyword': k, 'is_start': True},dont_filter=True)

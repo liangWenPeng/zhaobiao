@@ -8,14 +8,16 @@ from scrapy import Request
 
 from zhaobiao import utils
 from zhaobiao.items import ZhaobiaoItem
+from zhaobiao.spiders.base import ZbBaseSpider
 
 
-class A56productsSpider(Spider):
+class A56productsSpider(ZbBaseSpider):
     name = 'a56products'
-    keywords = utils.get_keywords()
-    start_urls = ['http://www.56products.com/search/index.html?keyword={keyword}&ctrl=Trade'.format(k) for k in keywords]
+    search_url = 'http://www.56products.com/search/index.html?keyword={keyword}&ctrl=Trade'
+
     custom_settings = {
         'DOWNLOAD_DELAY': 60,
+        'CONCURRENT_REQUESTS_PER_DOMAIN': 1
     }
 
     def __init__(self, *args, **kwargs):
@@ -23,6 +25,7 @@ class A56productsSpider(Spider):
         self.cookies = self.login()
 
     def login(self):
+        # print('login...')
         data = {
             'account': 'hzforklift',
             'pwd': 'sesame'
@@ -45,9 +48,11 @@ class A56productsSpider(Spider):
 
         next_page = response.css('div.page > div > a.next::attr(href)').extract_first()
         if next_page:
-            yield Request(response.urljoin(next_page), callback=self.parse)
+            yield Request(response.urljoin(next_page), callback=self.parse,dont_filter=True)
 
     def parse_article(self, response):
+        if not self.check_login_state(response.text):
+            return
         item = response.meta['item']
         item['source'] = response.url
         item['title'] = response.css('div.con-areal > div > div > h2::text').extract_first()
@@ -59,7 +64,15 @@ class A56productsSpider(Spider):
         if name:
             item['name'] = name
         item['addr'] = utils.extract_addr(div_center)
-        yield item
+        return item
+
+    def check_login_state(self, html):
+        p = '<p class="p-hide">请<a href="/login/index.html" style="color:#00F;">登录</a>查看信息</p>'
+        if p in html:
+            self.login()
+            return False
+        else:
+            return True
 
 
 if __name__ == '__main__':

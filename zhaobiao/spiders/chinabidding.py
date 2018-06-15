@@ -15,6 +15,11 @@ class ChinabiddingSpider(CrawlSpider):
 
     keywords = get_keywords()
 
+    custom_settings = {
+        'DOWNLOAD_DELAY': 60,
+        'CONCURRENT_REQUESTS_PER_DOMAIN': 1
+    }
+
     start_urls = ['https://www.chinabidding.cn/search/searchzbw/search2?areaid=&keywords={}' \
                   '&page=1&categoryid=&rp=22&table_type=1000&b_date='.format(k) for k in keywords]
     rules = (
