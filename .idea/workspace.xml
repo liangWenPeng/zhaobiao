@@ -3,12 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d41528b4-ab34-46f3-b4f3-bd2289dbb719" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scrapy.cfg" afterPath="$PROJECT_DIR$/scrapy.cfg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zhaobiao/settings.py" afterPath="$PROJECT_DIR$/zhaobiao/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zhaobiao/spiders/a56products.py" afterPath="$PROJECT_DIR$/zhaobiao/spiders/a56products.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zhaobiao/spiders/a95306.py" afterPath="$PROJECT_DIR$/zhaobiao/spiders/a95306.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zhaobiao/spiders/base.py" afterPath="$PROJECT_DIR$/zhaobiao/spiders/base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zhaobiao/spiders/chinabidding.py" afterPath="$PROJECT_DIR$/zhaobiao/spiders/chinabidding.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcom.py" afterPath="$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcom.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zhaobiao/spiders/zycg.py" afterPath="$PROJECT_DIR$/zhaobiao/spiders/zycg.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/zhaobiao/utils.py" afterPath="$PROJECT_DIR$/zhaobiao/utils.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/zhaobiao/spiders/chinabidding.py" afterPath="$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcn.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,19 +21,19 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/zhaobiao$a95306.coverage" NAME="a95306 Coverage Results" MODIFIED="1529029437155" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhaobiao/spiders" />
-    <SUITE FILE_PATH="coverage/zhaobiao$chinabiddingcom.coverage" NAME="chinabiddingcom Coverage Results" MODIFIED="1529032153496" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhaobiao/spiders" />
-    <SUITE FILE_PATH="coverage/zhaobiao$a56products.coverage" NAME="a56products Coverage Results" MODIFIED="1529035991083" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhaobiao/spiders" />
-    <SUITE FILE_PATH="coverage/zhaobiao$zycg.coverage" NAME="zycg Coverage Results" MODIFIED="1529031734969" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhaobiao/spiders" />
+    <SUITE FILE_PATH="coverage/zhaobiao$a95306.coverage" NAME="a95306 Coverage Results" MODIFIED="1529043363996" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhaobiao/spiders" />
+    <SUITE FILE_PATH="coverage/zhaobiao$chinabiddingcom.coverage" NAME="chinabiddingcom Coverage Results" MODIFIED="1529043721915" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhaobiao/spiders" />
+    <SUITE FILE_PATH="coverage/zhaobiao$a56products.coverage" NAME="a56products Coverage Results" MODIFIED="1529052758866" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhaobiao/spiders" />
     <SUITE FILE_PATH="coverage/zhaobiao$utils.coverage" NAME="utils Coverage Results" MODIFIED="1529032317357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhaobiao" />
+    <SUITE FILE_PATH="coverage/zhaobiao$zycg.coverage" NAME="zycg Coverage Results" MODIFIED="1529043918346" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/zhaobiao/spiders" />
   </component>
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="a56products.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/a56products.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="50" column="91" lean-forward="false" selection-start-line="50" selection-start-column="91" selection-end-line="50" selection-end-column="91" />
+            <state relative-caret-position="279">
+              <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
               <folding>
                 <element signature="e#23#32#0" expanded="true" />
               </folding>
@@ -38,81 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zhaobiao/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="12" column="89" lean-forward="true" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="89" />
-              <folding>
-                <element signature="e#23#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chinabidding.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/chinabidding.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-              <folding>
-                <element signature="e#24#33#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="a95306.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/a95306.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="41" column="80" lean-forward="false" selection-start-line="41" selection-start-column="80" selection-end-line="41" selection-end-column="80" />
-              <folding>
-                <element signature="e#23#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="zycg.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/zycg.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
-              <folding>
-                <element signature="e#23#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="chinabiddingcom.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcom.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="50" column="112" lean-forward="false" selection-start-line="50" selection-start-column="112" selection-end-line="50" selection-end-column="112" />
-              <folding>
-                <element signature="e#23#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="form.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Anaconda3/Lib/site-packages/scrapy/http/request/form.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="28" column="16" lean-forward="false" selection-start-line="28" selection-start-column="11" selection-end-line="28" selection-end-column="19" />
+            <state relative-caret-position="97">
+              <caret line="90" column="15" lean-forward="true" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -121,8 +54,8 @@
       <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/zhaobiao/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="107" column="13" lean-forward="true" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
+            <state relative-caret-position="112">
+              <caret line="61" column="35" lean-forward="false" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
               <folding>
                 <element signature="e#23#38#0" expanded="true" />
               </folding>
@@ -130,13 +63,81 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="api.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api.py">
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-588">
-              <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+            <state relative-caret-position="447">
+              <caret line="50" column="20" lean-forward="false" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
               <folding>
-                <element signature="e#24#38#0" expanded="true" />
+                <element signature="e#23#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spiders.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Anaconda3/Lib/site-packages/scrapy_redis/spiders.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="124" column="34" lean-forward="false" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Anaconda3/Lib/site-packages/scrapy/spiders/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="6">
+              <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chinabiddingcn.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcn.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-421">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding>
+                <element signature="e#25#54#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="a95306.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/a95306.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+              <folding>
+                <element signature="e#23#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="zycg.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/zycg.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="34" selection-end-column="93" />
+              <folding>
+                <element signature="e#23#52#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chinabiddingcom.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcom.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="139">
+              <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
+              <folding>
+                <element signature="e#23#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -151,20 +152,28 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Stat</find>
+      <find>custom_settings</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/zhaobiao/utils.py" />
-        <option value="$PROJECT_DIR$/zhaobiao/settings.py" />
         <option value="$PROJECT_DIR$/zhaobiao/spiders/chinabidding.py" />
-        <option value="$PROJECT_DIR$/zhaobiao/spiders/base.py" />
-        <option value="$PROJECT_DIR$/zhaobiao/spiders/a56products.py" />
+        <option value="$PROJECT_DIR$/scrapy.cfg" />
         <option value="$PROJECT_DIR$/zhaobiao/spiders/a95306.py" />
-        <option value="$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcom.py" />
         <option value="$PROJECT_DIR$/zhaobiao/spiders/zycg.py" />
+        <option value="$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcom.py" />
+        <option value="$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcn.py" />
+        <option value="$PROJECT_DIR$/zhaobiao/spiders/a56products.py" />
+        <option value="$PROJECT_DIR$/zhaobiao/utils.py" />
+        <option value="$PROJECT_DIR$/zhaobiao/spiders/base.py" />
+        <option value="$PROJECT_DIR$/zhaobiao/settings.py" />
       </list>
     </option>
   </component>
@@ -365,10 +374,10 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.a56products" />
-        <item index="1" class="java.lang.String" itemvalue="Python.utils" />
+        <item index="1" class="java.lang.String" itemvalue="Python.zycg" />
         <item index="2" class="java.lang.String" itemvalue="Python.chinabiddingcom" />
-        <item index="3" class="java.lang.String" itemvalue="Python.zycg" />
-        <item index="4" class="java.lang.String" itemvalue="Python.a95306" />
+        <item index="3" class="java.lang.String" itemvalue="Python.a95306" />
+        <item index="4" class="java.lang.String" itemvalue="Python.utils" />
       </list>
     </recent_temporary>
   </component>
@@ -404,22 +413,30 @@
       <option name="project" value="LOCAL" />
       <updated>1529034803100</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="抽象出基类，等待引入redis">
+      <created>1529036287304</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1529036287304</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25320512" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25320512" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934355" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -428,7 +445,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -442,14 +458,15 @@
     <MESSAGE value="first commit" />
     <MESSAGE value="修改import语句" />
     <MESSAGE value="爬虫开发基本完成，等待重构" />
-    <option name="LAST_COMMIT_MESSAGE" value="爬虫开发基本完成，等待重构" />
+    <MESSAGE value="抽象出基类，等待引入redis" />
+    <option name="LAST_COMMIT_MESSAGE" value="抽象出基类，等待引入redis" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/zhaobiao/spiders/a56products.py</url>
-          <line>56</line>
+          <line>38</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
@@ -481,7 +498,7 @@
         <state relative-caret-position="-588">
           <caret line="18" column="32" lean-forward="true" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
           <folding>
-            <element signature="e#24#38#0" expanded="true" />
+            <element signature="e#24#38#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -494,81 +511,113 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhaobiao/utils.py">
+    <entry file="file://$PROJECT_DIR$/scrapy.cfg">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="107" column="13" lean-forward="true" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
-          <folding>
-            <element signature="e#23#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhaobiao/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="30" />
+        <state relative-caret-position="280">
+          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/chinabidding.py">
+    <entry file="file://$USER_HOME$/.PyCharm2017.2/system/python_stubs/1013586911/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="e#24#33#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="1371">
+          <caret line="5154" column="8" lean-forward="false" selection-start-line="5154" selection-start-column="8" selection-end-line="5154" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/base.py">
+    <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="12" column="89" lean-forward="true" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="89" />
+        <state relative-caret-position="-421">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
-            <element signature="e#23#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/a56products.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="50" column="91" lean-forward="false" selection-start-line="50" selection-start-column="91" selection-end-line="50" selection-end-column="91" />
-          <folding>
-            <element signature="e#23#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/a95306.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="41" column="80" lean-forward="false" selection-start-line="41" selection-start-column="80" selection-end-line="41" selection-end-column="80" />
-          <folding>
-            <element signature="e#23#32#0" expanded="true" />
+            <element signature="e#25#54#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/chinabiddingcom.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="410">
-          <caret line="50" column="112" lean-forward="false" selection-start-line="50" selection-start-column="112" selection-end-line="50" selection-end-column="112" />
+        <state relative-caret-position="139">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding>
-            <element signature="e#23#32#0" expanded="true" />
+            <element signature="e#23#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/zycg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="36" column="36" lean-forward="true" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+        <state relative-caret-position="308">
+          <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="34" selection-end-column="93" />
+          <folding>
+            <element signature="e#23#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/a56products.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
           <folding>
             <element signature="e#23#32#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhaobiao/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="61" column="35" lean-forward="false" selection-start-line="61" selection-start-column="35" selection-end-line="61" selection-end-column="35" />
+          <folding>
+            <element signature="e#23#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda3/Lib/site-packages/scrapy_redis/spiders.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="124" column="34" lean-forward="false" selection-start-line="124" selection-start-column="34" selection-end-line="124" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda3/Lib/site-packages/scrapy/spiders/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6">
+          <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="23" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="447">
+          <caret line="50" column="20" lean-forward="false" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+          <folding>
+            <element signature="e#23#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhaobiao/spiders/a95306.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding>
+            <element signature="e#23#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zhaobiao/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="90" column="15" lean-forward="true" selection-start-line="90" selection-start-column="15" selection-end-line="90" selection-end-column="15" />
+          <folding />
         </state>
       </provider>
     </entry>

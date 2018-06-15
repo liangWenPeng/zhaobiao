@@ -1,19 +1,19 @@
 # -*- coding:utf-8 -*-
-import re
-from datetime import datetime
-from urllib import parse
-
-from scrapy.spiders import Spider
-from scrapy import Request, FormRequest
-from zhaobiao.utils import *
-from zhaobiao.items import ZhaobiaoItem
 import math
+from datetime import datetime
+
+from scrapy import Request, FormRequest
+
+from zhaobiao.items import ZhaobiaoItem
+from zhaobiao.spiders.base import ZbBaseSpider
+from zhaobiao.utils import *
 
 
-class ChinabiddingcomSpider(Spider):
+class ChinabiddingcomSpider(ZbBaseSpider):
+    """
+    比联网爬虫 chinabidding.com
+    """
     name = 'chinabiddingcom'
-    keywords = get_keywords()
-    search_url = 'http://www.chinabidding.com/search/proj.htm'
 
     def start_requests(self):
         for k in self.keywords:
@@ -21,7 +21,8 @@ class ChinabiddingcomSpider(Spider):
                 'fullText': k,
                 'poClass': 'BidNotice',
             }
-            yield FormRequest(url=self.search_url, formdata=data, meta={'keyword': k, 'is_start': True},dont_filter=True)
+            yield FormRequest(url=self.search_url, formdata=data, meta={'keyword': k, 'is_start': True},
+                              dont_filter=True)
 
     def parse(self, response):
         lis = response.css('ul.as-pager-body > li')
@@ -48,9 +49,10 @@ class ChinabiddingcomSpider(Spider):
                     'currentPage': str(page),
                     'infoClassCodes': '0105'
                 }
-                yield FormRequest(url=self.search_url, formdata=data, meta={'keyword': keyword},dont_filter=True)
+                yield FormRequest(url=self.search_url, formdata=data, meta={'keyword': keyword}, dont_filter=True)
 
     def parse_article(self, response):
+
         item = response.meta['item']
         item['source'] = response.url
         item['title'] = response.css('#lab-show > div.as-floor-normal > div.span-f > div > h3::text').extract_first()

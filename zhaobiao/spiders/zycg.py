@@ -1,18 +1,19 @@
 # -*- coding:utf-8 -*-
-import re
 from datetime import datetime
-from urllib import parse
 
-from scrapy.spiders import Spider
 from scrapy import Request
-from zhaobiao.utils import *
+
 from zhaobiao.items import ZhaobiaoItem
+from zhaobiao.spiders.base import ZbBaseSpider
+from zhaobiao.utils import *
 
 
-class ZycgSpider(Spider):
+class ZycgSpider(ZbBaseSpider):
+    """
+    中央政府采购网爬虫
+    """
+
     name = 'zycg'
-
-    search_url = 'http://www.zycg.gov.cn/article/article_search?keyword={keyword}&catalog='
 
     def parse(self, response):
         lis = response.css('ul.lby-list > li')

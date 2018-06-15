@@ -1,9 +1,9 @@
 # -*- coding:utf-8 -*-
 import re
+import time
 from datetime import datetime
 from urllib import parse
 
-from scrapy.spiders import Spider
 from scrapy import Request
 
 from zhaobiao import utils
@@ -12,33 +12,15 @@ from zhaobiao.spiders.base import ZbBaseSpider
 
 
 class A56productsSpider(ZbBaseSpider):
+    """
+        中国物流网爬虫
+    """
     name = 'a56products'
-    search_url = 'http://www.56products.com/search/index.html?keyword={keyword}&ctrl=Trade'
-
-    custom_settings = {
-        'DOWNLOAD_DELAY': 60,
-        'CONCURRENT_REQUESTS_PER_DOMAIN': 1
-    }
-
-    def __init__(self, *args, **kwargs):
-        super(A56productsSpider, self).__init__(*args, **kwargs)
-        self.cookies = self.login()
-
-    def login(self):
-        # print('login...')
-        data = {
-            'account': 'hzforklift',
-            'pwd': 'sesame'
-        }
-        url = 'http://www.56products.com/login/index.html'
-        return utils.login(url, data)
-
     def parse(self, response):
         lis = response.css('ul.bo-list-01 > li')
         for li in lis[:-1]:
             item = ZhaobiaoItem()
             date_str = li.css('div.bo-list-item-info > p:nth-child(1) > span > em::text').extract_first().strip()
-            # date_str = re.search(r'\[(.*?)\]', date_str).group(1)
             item['publish_date'] = datetime.strptime(date_str, '%Y-%m-%d')
             href = li.css('div.bo-list-item-head > h3 > a::attr(href)').extract_first()
             keywords = re.search(r'keyword=(.*?)&', response.url).group(1)
@@ -48,7 +30,7 @@ class A56productsSpider(ZbBaseSpider):
 
         next_page = response.css('div.page > div > a.next::attr(href)').extract_first()
         if next_page:
-            yield Request(response.urljoin(next_page), callback=self.parse,dont_filter=True)
+            yield Request(response.urljoin(next_page), callback=self.parse, dont_filter=True)
 
     def parse_article(self, response):
         if not self.check_login_state(response.text):
@@ -65,14 +47,6 @@ class A56productsSpider(ZbBaseSpider):
             item['name'] = name
         item['addr'] = utils.extract_addr(div_center)
         return item
-
-    def check_login_state(self, html):
-        p = '<p class="p-hide">请<a href="/login/index.html" style="color:#00F;">登录</a>查看信息</p>'
-        if p in html:
-            self.login()
-            return False
-        else:
-            return True
 
 
 if __name__ == '__main__':

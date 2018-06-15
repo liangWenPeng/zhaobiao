@@ -1,19 +1,18 @@
 # -*- coding:utf-8 -*-
-import re
 from datetime import datetime
-from urllib import parse
 
-from scrapy.spiders import Spider
 from scrapy import Request
 
+from zhaobiao.items import ZhaobiaoItem
 from zhaobiao.spiders.base import ZbBaseSpider
 from zhaobiao.utils import *
-from zhaobiao.items import ZhaobiaoItem
 
 
 class A95306Spider(ZbBaseSpider):
+    """
+    铁道部采购网爬虫
+    """
     name = 'a95306'
-    search_url = 'http://wzcgzs.95306.cn/notice/indexlist.do?dealGroup=10&notTitle={keyword}'
 
     def parse(self, response):
         keyword = response.meta['keyword']
@@ -39,7 +38,7 @@ class A95306Spider(ZbBaseSpider):
                 for p in range(2, page_num + 1):
                     url = 'http://wzcgzs.95306.cn/notice/indexlist.do?dealGroup=10&unitType=&noticeType=&dealType=&materialType=&' \
                           'extend=1&curPage={}&notTitle={}&inforCode=&time0=&time1='.format(p, keyword)
-                    yield Request(url=url, callback=self.parse, dont_filter=True)
+                    yield Request(url=url, callback=self.parse, dont_filter=True, meta=response.meta)
 
     def parse_article(self, response):
         item = response.meta['item']
