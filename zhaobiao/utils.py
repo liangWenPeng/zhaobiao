@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import requests
 import re
-from zhaobiao.zhaobiao.settings import KEYWORDS_API, DEBUG
+from zhaobiao.settings import KEYWORDS_API, DEBUG
 
 
 def cookie2dict(s):

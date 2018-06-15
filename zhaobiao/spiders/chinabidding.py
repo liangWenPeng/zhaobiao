@@ -5,8 +5,8 @@ from urllib import parse
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
 from datetime import datetime
-from zhaobiao.zhaobiao.items import ZhaobiaoItem
-from zhaobiao.zhaobiao.utils import clean_html, extract_phone, extract_name, login, get_keywords
+from zhaobiao.items import ZhaobiaoItem
+from zhaobiao.utils import clean_html, extract_phone, extract_name, login, get_keywords
 
 
 class ChinabiddingSpider(CrawlSpider):

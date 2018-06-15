@@ -5,8 +5,8 @@ from urllib import parse
 
 from scrapy.spiders import Spider
 from scrapy import Request
-from ..utils import *
-from ..items import ZhaobiaoItem
+from zhaobiao.utils import *
+from zhaobiao.items import ZhaobiaoItem
 
 
 class A95306Spider(Spider):
