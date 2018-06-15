@@ -90,7 +90,7 @@ DB_PSW = 'lcworld'
 
 LOG_LEVEL = 'INFO'
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     SCHEDULER_FLUSH_ON_START = True

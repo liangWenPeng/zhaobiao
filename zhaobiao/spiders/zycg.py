@@ -32,7 +32,7 @@ class ZycgSpider(ZbBaseSpider):
 
         next_page = response.css('a.next_page::attr(href)').extract_first()
         if next_page:
-            yield Request(response.urljoin(next_page), callback=self.parse, dont_filter=True)
+            yield Request(response.urljoin(next_page), callback=self.parse, dont_filter=True,meta=response.meta)
 
     def parse_article(self, response):
         item = response.meta['item']

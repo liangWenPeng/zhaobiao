@@ -16,6 +16,7 @@ class A56productsSpider(ZbBaseSpider):
         中国物流网爬虫
     """
     name = 'a56products'
+
     def parse(self, response):
         lis = response.css('ul.bo-list-01 > li')
         for li in lis[:-1]:
@@ -30,7 +31,7 @@ class A56productsSpider(ZbBaseSpider):
 
         next_page = response.css('div.page > div > a.next::attr(href)').extract_first()
         if next_page:
-            yield Request(response.urljoin(next_page), callback=self.parse, dont_filter=True)
+            yield Request(response.urljoin(next_page), callback=self.parse, dont_filter=True, meta=response.meta)
 
     def parse_article(self, response):
         if not self.check_login_state(response.text):
