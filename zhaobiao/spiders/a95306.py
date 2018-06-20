@@ -38,7 +38,7 @@ class A95306Spider(ZbBaseSpider):
                 for p in range(2, page_num + 1):
                     url = 'http://wzcgzs.95306.cn/notice/indexlist.do?dealGroup=10&unitType=&noticeType=&dealType=&materialType=&' \
                           'extend=1&curPage={}&notTitle={}&inforCode=&time0=&time1='.format(p, keyword)
-                    yield Request(url=url, callback=self.parse, dont_filter=True, meta=response.meta)
+                    yield Request(url=url, callback=self.parse, dont_filter=True, meta={'keyword': keyword})
 
     def parse_article(self, response):
         item = response.meta['item']

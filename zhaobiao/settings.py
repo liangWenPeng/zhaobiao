@@ -90,13 +90,6 @@ DB_PSW = 'lcworld'
 
 LOG_LEVEL = 'INFO'
 
-DEBUG = False
-
-if DEBUG:
-    SCHEDULER_FLUSH_ON_START = True
-    MONGO_URI = 'mongodb://localhost'
-    LOG_LEVEL = 'DEBUG'
-
 # 正则表达式部分
 NAME_PREFIX = '联系人|联系人及联系方式|联系人及电话|联系方式|联系电话|联络人员|招标人员|负责人|采购人|联系方式|发布人|经办人|' \
               '招标人|技术咨询人|业务咨询|商务合作|技术'
@@ -107,3 +100,10 @@ TEL_TARGET = r'\d{3,4}-\d{7,8}|\d{3,4}\s*-?\s*\d{7,8}|\(\d{3,4}\)\s*\d{7,8}|\d{7
 
 ADDR_PREFIX = '采购中心地址|收货地点|送货地点|开标地点|办公地址|地址|地点'
 ADDR_TARGET = ['[\u4e00-\u9fa5a-z0-9（）]{5,}?\s']
+
+DEBUG = False
+
+if DEBUG:
+    SCHEDULER_FLUSH_ON_START = True
+    MONGO_URI = 'mongodb://localhost'
+    LOG_LEVEL = 'DEBUG'

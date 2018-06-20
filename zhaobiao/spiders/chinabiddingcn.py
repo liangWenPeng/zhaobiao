@@ -22,7 +22,7 @@ class ChinabiddingcnSpider(ZbBaseSpider):
 
         next_page = response.css('#pages > span > a:nth-last-child(2)::attr(href)').extract_first()
         if next_page:
-            yield Request(response.urljoin(next_page), callback=self.parse, dont_filter=True,meta=response.meta)
+            yield Request(response.urljoin(next_page), callback=self.parse, dont_filter=True,meta={'keyword': keyword})
 
     def parse_article(self, response):
         if not self.check_login_state(response.text):

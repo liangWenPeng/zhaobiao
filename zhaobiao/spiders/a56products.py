@@ -18,20 +18,21 @@ class A56productsSpider(ZbBaseSpider):
     name = 'a56products'
 
     def parse(self, response):
+        keyword = response.meta['keyword']
+
         lis = response.css('ul.bo-list-01 > li')
         for li in lis[:-1]:
             item = ZhaobiaoItem()
             date_str = li.css('div.bo-list-item-info > p:nth-child(1) > span > em::text').extract_first().strip()
             item['publish_date'] = datetime.strptime(date_str, '%Y-%m-%d')
             href = li.css('div.bo-list-item-head > h3 > a::attr(href)').extract_first()
-            keywords = re.search(r'keyword=(.*?)&', response.url).group(1)
-            item['keyword'] = parse.unquote(keywords)
+            item['keyword'] = keyword
             yield Request(response.urljoin(href), callback=self.parse_article, meta={'item': item},
                           cookies=self.cookies)
 
         next_page = response.css('div.page > div > a.next::attr(href)').extract_first()
         if next_page:
-            yield Request(response.urljoin(next_page), callback=self.parse, dont_filter=True, meta=response.meta)
+            yield Request(response.urljoin(next_page), callback=self.parse, dont_filter=True, meta={'keyword': keyword})
 
     def parse_article(self, response):
         if not self.check_login_state(response.text):

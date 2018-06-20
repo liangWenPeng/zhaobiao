@@ -16,6 +16,7 @@ def cookie2dict(s):
 def get_keywords():
     rsp = requests.get(KEYWORDS_API).json()
     if rsp['result'] == '0':
+        logger.info('keywords:{}'.format(rsp['data']))
         return rsp['data']
     else:
         raise Exception('请求关键字失败:{}'.format(rsp['desc']))
