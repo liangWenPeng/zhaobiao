@@ -23,8 +23,10 @@ class A56productsSpider(ZbBaseSpider):
         lis = response.css('ul.bo-list-01 > li')
         for li in lis[:-1]:
             item = ZhaobiaoItem()
-            date_str = li.css('div.bo-list-item-info > p:nth-child(1) > span > em::text').extract_first().strip()
-            item['publish_date'] = datetime.strptime(date_str, '%Y-%m-%d')
+            date_str = li.css('div.bo-list-item-info > p:nth-child(1) > span > em::text').extract_first()
+            if date_str:
+                date_str = date_str.strip()
+                item['publish_date'] = datetime.strptime(date_str, '%Y-%m-%d')
             href = li.css('div.bo-list-item-head > h3 > a::attr(href)').extract_first()
             item['keyword'] = keyword
             yield Request(response.urljoin(href), callback=self.parse_article, meta={'item': item},
@@ -36,7 +38,8 @@ class A56productsSpider(ZbBaseSpider):
 
     def parse_article(self, response):
         if not self.check_login_state(response.text):
-            return
+            return Request(response.url, callback=self.parse_article, meta=response.meta,
+                           cookies=self.cookies, dont_filter=True)
         item = response.meta['item']
         item['source'] = response.url
         item['title'] = response.css('div.con-areal > div > div > h2::text').extract_first()
@@ -54,4 +57,4 @@ class A56productsSpider(ZbBaseSpider):
 if __name__ == '__main__':
     from scrapy import cmdline
 
-    cmdline.execute("scrapy crawl a56products".split())
+    cmdline.execute("scrapy crawl a56products -o a56products.csv".split())

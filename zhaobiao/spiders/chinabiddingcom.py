@@ -34,10 +34,12 @@ class ChinabiddingcomSpider(ZbBaseSpider):
             href = li.css('a.as-pager-item::attr(href)').extract_first()
             # title = li.css('a.as-pager-item > h5 > span.txt::text').extract_first().strip()
             # item['title'] = title
-            area = li.css('a.as-pager-item > div > dl > dd > span:nth-child(2) > strong::text').extract_first().strip()
+            area = li.css('a.as-pager-item > div > dl > dd > span:nth-child(2) > strong::text').extract_first()
+            if area:
+                area = area.strip()
             item['addr'] = area
             item['keyword'] = keyword
-            yield Request(response.urljoin(href), callback=self.parse_article, meta={'item': item})
+            yield Request(response.urljoin(href), callback=self.parse_article, meta={'item': item}, priority=10)
         if response.meta.get('is_start', False):
             item_num = response.css(
                 '#lab-show > div.as-floor-normal > div.as-md > h3 > div > ul > li > span::text').extract_first()
@@ -56,7 +58,7 @@ class ChinabiddingcomSpider(ZbBaseSpider):
         item = response.meta['item']
         item['source'] = response.url
         item['title'] = response.css('#lab-show > div.as-floor-normal > div.span-f > div > h3::text').extract_first()
-        div_center = clean_html(response.text)
+        div_center = clean_html(response.text.replace('咨询电话：010-58851111', ''))
         addr = extract_addr(div_center)
         if addr:
             item['addr'] = addr

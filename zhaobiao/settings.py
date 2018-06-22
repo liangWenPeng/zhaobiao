@@ -12,12 +12,12 @@ CONCURRENT_REQUESTS_PER_IP = 4
 
 SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 DUPEFILTER_CLASS = "scrapy_redis.dupefilter.RFPDupeFilter"
+SCHEDULER_PERSIST = True
+SCHEDULER_FLUSH_ON_START = False
 
 EXTENSIONS = {
     'scrapy.contrib.closespider.CloseSpider': 300,
 }
-
-CLOSESPIDER_TIMEOUT = 60 * 60 * 5
 
 # Override the default request headers:
 USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Safari/537.36'
@@ -46,7 +46,8 @@ ACCOUNTS = {
     'a56products': [
         {
             'account': 'hzforklift',
-            'pwd': 'sesame'
+            'pwd': 'sesame',
+            'input': 'on'
         },
     ],
     'chinabiddingcn': [
@@ -66,9 +67,11 @@ NOT_LOGIN_STRS = {
 # 爬虫下载页面延迟（秒）
 DOWNLOAD_DELAY = 15
 DOWNLOAD_DELAYS = {
-    'a56products': 120,
+    'a56products': 30,
     'chinabiddingcn': 120,
 }
+
+HTTPCACHE_POLICY = 'scrapy.contrib.httpcache.RFC2616Policy'
 
 # 每个域名的并发数
 CONCURRENT_REQUESTS_PER_DOMAINS = {
@@ -81,6 +84,8 @@ ITEM_PIPELINES = {
 
 KEYWORDS_API = "http://123.56.24.201:9600/universe/hangcha/crawler/keywords"
 
+CLOSESPIDER_TIMEOUT = 60 * 60 * 5
+
 # REDIS_HOST = 'localhost'
 # REDIS_PORT = 6379
 
@@ -88,7 +93,7 @@ MONGO_URI = 'mongodb://10.23.169.125'
 DB_USER = 'spider'
 DB_PSW = 'lcworld'
 
-LOG_LEVEL = 'INFO'
+LOG_LEVEL = 'DEBUG'
 
 # 正则表达式部分
 NAME_PREFIX = '联系人|联系人及联系方式|联系人及电话|联系方式|联系电话|联络人员|招标人员|负责人|采购人|联系方式|发布人|经办人|' \
@@ -96,7 +101,8 @@ NAME_PREFIX = '联系人|联系人及联系方式|联系人及电话|联系方�
 NAME_TARGET = ['[\u4e00-\u9fa5]{2,4}']
 
 TEL_PREFIX = '联系电话|联系方式|联系人电话|联络人电话|联系人及联系方式|电话|手机'
-TEL_TARGET = r'\d{3,4}-\d{7,8}|\d{3,4}\s*-?\s*\d{7,8}|\(\d{3,4}\)\s*\d{7,8}|\d{7,8}|1[3,4,5,7,8]\d{9}'
+TEL_TARGET = r'0\d{2,3}-\d{7,8}|\d{3,4}-\d{7,8}|\d{3,4}\s*-?\s*\d{7,8}|\(\d{3,4}\)\s*\d{7,8}|\d{7,11}|' \
+             r'1[3,4,5,7,8]\d{9}|\d{2,4}-\d{7,8}'
 
 ADDR_PREFIX = '采购中心地址|收货地点|送货地点|开标地点|办公地址|地址|地点'
 ADDR_TARGET = ['[\u4e00-\u9fa5a-z0-9（）]{5,}?\s']

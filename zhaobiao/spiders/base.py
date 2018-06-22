@@ -54,7 +54,7 @@ class ZbBaseSpider(RedisSpider):
             return True
         s = not_login_str or self.not_login_str
         if s and s in html:
-            self.login()
+            self.cookies = self.login()
             return False
         else:
             return True

@@ -9,6 +9,8 @@
 import pymongo
 from datetime import datetime
 
+from scrapy.exceptions import DropItem
+
 
 class MongoPipeline(object):
     def __init__(self, mongo_uri, mongo_db, is_debug, db_user, db_psw):
@@ -38,7 +40,15 @@ class MongoPipeline(object):
         self.client.close()
 
     def process_item(self, item, spider):
+        if not item['tel'] and (not item['name'] or item['name'] == '中心'):
+            raise DropItem('tel and name is required')
+
         collection_name = item.__class__.__name__
+        coll = self.db[collection_name]
+
+        if coll.find_one({'source': item['source']}):
+            raise DropItem('item has existed in mongo')
+
         item['crawled_date'] = datetime.now()
-        self.db[collection_name].insert(dict(item))
+        coll.insert(dict(item))
         return item

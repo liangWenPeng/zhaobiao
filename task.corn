@@ -1,8 +1,7 @@
-1 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=a56products
-2 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=a95306
-#3 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=chinabiddingcn
-4 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=chinabiddingcom
-5 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=zycg
-
+1 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=a56products >> /root/task.log
+2 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=a95306 >> /root/task.log
+#3 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=chinabiddingcn >> /root/task.log
+4 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=chinabiddingcom >> /root/task.log
+5 0 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=zycg  >> /root/task.log
 #test
-#15 17 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=zycg
+50 19 * * * curl http://localhost:6800/schedule.json -d project=zhaobiao -d spider=zycg >> /root/task.log

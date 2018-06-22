@@ -1,7 +1,8 @@
 # -*- coding:utf-8 -*-
 import requests
 import re
-from zhaobiao.settings import KEYWORDS_API, DEBUG,NAME_PREFIX,NAME_TARGET,TEL_PREFIX,TEL_TARGET,ADDR_PREFIX,ADDR_TARGET
+from zhaobiao.settings import KEYWORDS_API, DEBUG, NAME_PREFIX, NAME_TARGET, TEL_PREFIX, TEL_TARGET, ADDR_PREFIX, \
+    ADDR_TARGET
 import logging
 
 logger = logging.getLogger(__name__)
@@ -36,7 +37,7 @@ def re_search(pres, mids, targets, text, join_s=True):
                     target_text = re.search(pat, text)
                     if target_text:
                         result = target_text.group('target').strip()
-                        logger.debug('{} {}'.format(pat,result))
+                        logger.debug('{} {}'.format(pat, result))
                         return result
                 except Exception as e:
                     print('Error', pat, e)
@@ -51,7 +52,11 @@ def clean_html(html):
     html = re.sub(r'方\s*式\s*', '电话', html)
     html = re.sub(r'电\s*话\s*', '电话', html)
     html = re.sub(r'\s*-\s*', '-', html)
+    html = re.sub(r'86-21-', '', html)
+    html = re.sub(r'0086-', '', html)
     html = re.sub(r'\+86-?', '', html)
+    html = re.sub(r'86-', '', html)
+    html = re.sub(r'－－', '-', html)
     return html
 
 
@@ -59,15 +64,15 @@ def extract_phone(html, loose=True):
     pres = TEL_PREFIX.split('|')
     pres = [r'\s*'.join(p) for p in pres]
     mids = ['：', ':', ]
-    mids = [r'{}\s*[\u4e00-\u9fa5]*?'.format(m) for m in mids]
+    mids = [r'{}\s*[\u4e00-\u9fa5，（）]*?'.format(m) for m in mids]
     targets = TEL_TARGET.split('|')
     tel = re_search(pres, mids, targets, html, join_s=False)
     if not tel and loose:
-        pres = '联系人|业务咨询|商务合作'.split('|')
+        pres = TEL_PREFIX.split('|') + '联系人|业务咨询|商务合作'.split('|')
         pres = [r'\s*'.join(p) for p in pres]
         pres = [r'{}.*?'.format(p) for p in pres]
-        mids = ['：*', ':*', ' ', ]
-        mids = [r'{}\s*[\u4e00-\u9fa5]*?'.format(m) for m in mids]
+        mids = ['：*', ':*', '', ]
+        mids = [r'{}\s*[\u4e00-\u9fa5，（）]*?'.format(m) for m in mids]
         tel = re_search(pres, mids, targets, html, join_s=False)
     return tel
 
@@ -98,11 +103,33 @@ def login(url, data):
     return resp.cookies.get_dict()
 
 
+def data2csv():
+    api = 'http://106.75.226.163/xiansuo?limit=2000'
+    datas = requests.get(api).json()['data']
+    # import pandas as pd
+    # df = pd.DataFrame.from_dict(datas)
+    # df.to_csv('data.csv')
+    n = 0
+    for d in datas:
+        if '56pro' in d['source'] and d['name'] == '中心':
+            print(d)
+            n += 1
+    print(n)
+
+
 if __name__ == '__main__':
-    data = {
-        'account': 'hzforklift',
-        'pwd': 'sesame'
-    }
-    url = 'http://www.56products.com/login/index.html'
-    ck = login(url, data)
-    print(ck)
+    # data = {
+    #     'account': 'hzforklift',
+    #     'pwd': 'sesame',
+    #     'input': 'on'
+    # }
+    # url = 'http://www.56products.com/login/index.html'
+    # ck = login(url, data)
+    # print(ck)
+    #
+    # resp = requests.get('http://www.chinabidding.com/bidDetail/226253002.html')
+    # html = clean_html(resp.text)
+    # print(html)
+    # print(extract_name(html), extract_addr(html), extract_phone(html))
+
+    data2csv()
